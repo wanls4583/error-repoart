@@ -17,9 +17,9 @@ module.exports = class DAO {
         });
     }
     //添加用户
-    save(message) {
-        var addSql = 'INSERT IGNORE INTO error_message(message) VALUES(?)';
-        var addSqlParams = [message];
+    save(message, userAgent) {
+        var addSql = 'INSERT IGNORE INTO error_message(message, user_agent) VALUES(?, ?)';
+        var addSqlParams = [message, userAgent];
         return this._select(addSql, addSqlParams);
     }
     //查询用户
