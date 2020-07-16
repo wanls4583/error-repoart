@@ -4,7 +4,9 @@ var Dao = require('../modjs/dao.js');
 const dao = new Dao();
 
 router.get('/report', function(req, res, next) {
-    dao.save(req.query.message, req.query.userAgent);
+    if(req.query.message) {
+        dao.save(req.query.message, req.query.userAgent);
+    }
     res.send('');
 });
 
