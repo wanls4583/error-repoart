@@ -11,8 +11,11 @@ router.get('/report', function(req, res, next) {
 router.get('/report/list', function(req, res, next) {
     dao.get(req.query.page || 1, req.query.userAgent || 20).then((result) => {
     	result && result.map((item)=>{
-    		item.message = JSON.parse(item.message);
-    		item.user_agent = JSON.parse(item.user_agent);
+            try{
+                item.message = JSON.parse(item.message);
+    		    item.user_agent = JSON.parse(item.user_agent);
+            } catch(e){}
+    		
     	});
         res.json(result);
     });
