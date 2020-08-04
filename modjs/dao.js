@@ -24,7 +24,7 @@ module.exports = class DAO {
             browser = _getBrowser(userAgent);
             messageObj = JSON.parse(message);
         } catch (e) {}
-        var addSql = 'INSERT IGNORE INTO error_message(message, user_agent, browser, error_msg, line, column, src) VALUES(?, ?, ?, ?, ?, ?, ?)';
+        var addSql = 'INSERT IGNORE INTO error_message(message, user_agent, browser, error_msg, error_line, error_column, error_src) VALUES(?, ?, ?, ?, ?, ?, ?)';
         var addSqlParams = [message, userAgent, browser, messageObj[0], messageObj[2], messageObj[3], messageObj[1]];
         return this._select(addSql, addSqlParams);
 
